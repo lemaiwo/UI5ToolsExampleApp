@@ -1,6 +1,6 @@
 {
     "sap": { 
-        "target": "http://10.0.80.71",
-        "auth": "lemaiwo:flexso01"
+        "target": "http://10.0.xx.xx",
+        "auth": "lemaiwo:xxxxx"
     }
 }
