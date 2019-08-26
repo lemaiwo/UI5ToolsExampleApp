@@ -23,7 +23,7 @@
     "start:webapp": "ui5 serve",
     "start:dist": "serve dist",
     "lint": "eslint webapp",
-    "build": "rimraf dist && ui5 build --a",
+    "build": "rimraf dist && ui5 build",
     "sapbuild": "rimraf dist && ui5 build --include-task=generateManifestBundle generateCachebusterInfo",
     "proxy": "node proxy.js"
   }
