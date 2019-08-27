@@ -6,6 +6,10 @@ server:
   customMiddleware:
     - name: odataProxy
       beforeMiddleware: serveResources
+builder:
+  customTasks:
+    - name: babel
+      afterTask: replaceVersion
 ---
 specVersion: "1.0"
 kind: extension
@@ -14,3 +18,11 @@ metadata:
   name: odataProxy
 middleware:
   path: lib/middleware/odataProxy.js
+---
+specVersion: "1.0"
+kind: extension
+type: task
+metadata:
+  name: babel
+task:
+  path: lib/tasks/babel.js
