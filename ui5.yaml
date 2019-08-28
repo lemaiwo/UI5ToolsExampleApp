@@ -7,6 +7,40 @@ server:
     - name: odataProxy
       beforeMiddleware: serveResources
 builder:
+  bundles:
+  - bundleDefinition:
+      name: be/wl/PersonSkills/Component-preload.js
+      defaultFileTypes:
+      - ".js"
+      - ".json"
+      - ".xml"
+      - ".html"
+      - ".library"
+      sections:
+      - mode: raw
+        filters:
+        - be/wl/PersonSkills/regenerator-runtime/runtime.js
+      - mode: preload
+        filters:
+        - be/wl/PersonSkills/manifest.json
+        - be/wl/PersonSkills/controller/**
+        - be/wl/PersonSkills/Component.js
+        - be/wl/PersonSkills/i18n/**
+        - be/wl/PersonSkills/model/**
+        - be/wl/PersonSkills/ui5fixes/**
+        - be/wl/PersonSkills/util/**
+        - be/wl/PersonSkills/view/**
+        - be/wl/PersonSkills/libs/**
+        - be/wl/PersonSkills/test/**
+        - be/wl/PersonSkills/service/**
+        - be/wl/PersonSkills/state/**
+        - be/wl/PersonSkills/localService/**
+        resolve: false
+        sort: true
+        declareModules: false
+    bundleOptions:
+      optimize: true
+      usePredefineCalls: true
   customTasks:
     - name: babel
       afterTask: replaceVersion

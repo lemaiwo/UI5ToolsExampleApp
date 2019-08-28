@@ -27,13 +27,14 @@ sap.ui.define([
 			this.data.display = false;
 			// this.updateModel();
 		},
-		getPerson: function (id) {
-			return this.PersonService.getPerson(id).then((result) => {
-				this.data.Person = new Person(result.data);
-				this.data.display = true;
-				this.updateModel();
-				return this.data.Person;
-			});
+		getPerson: async function (id) {
+			// return this.PersonService.getPerson(id).then((result) => {
+			let result = await this.PersonService.getPerson(id);
+			this.data.Person = new Person(result.data);
+			this.data.display = true;
+			this.updateModel();
+			return this.data.Person;
+			// });
 		},
 		newPerson: function () {
 			return this.PersonService.createPerson(this.data.Person).then((result) => result.data.Id);
