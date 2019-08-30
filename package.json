@@ -31,8 +31,8 @@
     "start:webapp": "ui5 serve",
     "start:dist": "serve dist",
     "lint": "eslint webapp",
-    "build": "rimraf dist && ui5 build",
-    "sapbuild": "rimraf dist && ui5 build --include-task=generateManifestBundle generateCachebusterInfo",
+    "build": "rimraf dist && ui5 build -a",
+    "sapbuild": "rimraf dist && ui5 build",
     "proxy": "node proxy.js",
     "deploy": "npx nwabap upload --base ./dist --conn_server \"$ABAP_DEVELOPMENT_SERVER_HOST\" --conn_user \"$ABAP_DEVELOPMENT_USER\" --conn_password \"$ABAP_DEVELOPMENT_PASSWORD\" --abap_package \"$ABAP_PACKAGE\" --abap_bsp \"$ABAP_APPLICATION_NAME\" --abap_bsp_text \"$ABAP_APPLICATION_DESC\" --abap_transport \"$CI_COMMIT_TITLE\"",
     "watch": "npm-watch sapbuild"
