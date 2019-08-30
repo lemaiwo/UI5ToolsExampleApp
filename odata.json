@@ -1,6 +1,6 @@
 {
     "sap": { 
         "target": "http://10.0.xx.xx",
-        "auth": "lemaiwo:xxxxx"
+        "auth": "lemaiwo:xxxx"
     }
 }

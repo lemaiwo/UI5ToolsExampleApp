@@ -15,7 +15,6 @@ sap.ui.define([
 			manifest : "json"
 		},
 		PERSON:"Person",
-
 		/**
 		 * The component is initialized by UI5 automatically during the startup of the app and calls the init method once.
 		 * In this method, the device models are set and the router is initialized.

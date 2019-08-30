@@ -16,7 +16,9 @@
     "@babel/preset-env": "^7.3.4",
     "node-emoji": "^1.10.0",
     "colors": "^1.3.3",
-    "regenerator-runtime": "^0.13.3"
+    "regenerator-runtime": "^0.13.3",
+    "nwabap-ui5uploader": "^0.3.4",
+    "npm-watch": "^0.5.0"
   },
   "dependencies": {
     "@openui5/sap.f": "^1.69.1",
@@ -25,12 +27,25 @@
     "@openui5/themelib_sap_belize": "^1.69.1"
   },
   "scripts": {
-    "start": "npm-run-all build --parallel start:dist proxy",
+    "start": "npm-run-all sapbuild --parallel watch start:dist proxy",
     "start:webapp": "ui5 serve",
     "start:dist": "serve dist",
     "lint": "eslint webapp",
     "build": "rimraf dist && ui5 build",
     "sapbuild": "rimraf dist && ui5 build --include-task=generateManifestBundle generateCachebusterInfo",
-    "proxy": "node proxy.js"
+    "proxy": "node proxy.js",
+    "deploy": "npx nwabap upload --base ./dist --conn_server \"$ABAP_DEVELOPMENT_SERVER_HOST\" --conn_user \"$ABAP_DEVELOPMENT_USER\" --conn_password \"$ABAP_DEVELOPMENT_PASSWORD\" --abap_package \"$ABAP_PACKAGE\" --abap_bsp \"$ABAP_APPLICATION_NAME\" --abap_bsp_text \"$ABAP_APPLICATION_DESC\" --abap_transport \"$CI_COMMIT_TITLE\"",
+    "watch": "npm-watch sapbuild"
+  },
+  "watch": {
+    "sapbuild": {
+      "patterns": [
+        "webapp",
+        "ui5.yaml"
+      ],
+      "extensions": "js,json,xml,html,properties",
+      "delay": 500,
+      "runOnChangeOnly": true
+    }
   }
 }
